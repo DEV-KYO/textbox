@@ -26,6 +26,27 @@ void TextBox::draw(sf::RenderTarget &window, sf::RenderStates states) const {
 }
 
 void TextBox::addEventHandler(sf::RenderWindow &window, sf::Event event) {
+    if(event.type == sf::Event::MouseButtonPressed) {
+        if (MouseEvents<sf::RectangleShape>::mouseClicked(shape, window)) {
+            std::cout << "Mouse Clicked on TextBox" << std::endl;
+            setState(ENABLED);
+        } else {
+            std::cout << "Mouse Clicked outside TextBox" << std::endl;
+            setState(DISABLED);
+        }
+    }
+    if(event.type == sf::Event::TextEntered) {
+        if (isEnabled() && event.text.unicode < 128 && event.text.unicode != '\b') { // We only handle ASCII
+            char typedChar = static_cast<char>(event.text.unicode);
+
+            // Create a new LetterObject with the typed character
+            LetterObject newLetter;
+            newLetter.setCharacter(typedChar);
+
+            // Add the new LetterObject to the letters vector
+            addLetter(newLetter);
+        }
+    }
 
 }
 

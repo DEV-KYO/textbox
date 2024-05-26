@@ -56,13 +56,7 @@ void Application::processEvents() {
             //Mouse Button Pressed
             case sf::Event::MouseButtonPressed:
                 std::cout << "Mouse Button Pressed" << std::endl;
-                if (MouseEvents<TextBox>::mouseClicked(textBox, window)) {
-                    std::cout << "Mouse Clicked on TextBox" << std::endl;
-                    textBox.setState(ENABLED);
-                } else {
-                    std::cout << "Mouse Clicked outside TextBox" << std::endl;
-                    textBox.setState(DISABLED);
-                }
+                textBox.addEventHandler(window, event);
             break;
 
             //Key Pressed
@@ -82,20 +76,8 @@ void Application::processEvents() {
                 break;
             // Text entered
             case sf::Event::TextEntered:
-                if (textBox.isEnabled() && event.text.unicode < 128 && event.text.unicode != '\b') { // We only handle ASCII
-                    char typedChar = static_cast<char>(event.text.unicode);
-
-                    // Create a new LetterObject with the typed character
-                    LetterObject newLetter;
-                    newLetter.setCharacter(typedChar);
-
-                    // Add the new LetterObject to the letters vector
-                    textBox.addLetter(newLetter);
-                }
+                textBox.addEventHandler(window, event);
                 break;
-
-
-
         }
 
     }
