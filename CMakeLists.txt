@@ -14,7 +14,6 @@ add_executable(${PROJECT_NAME} main.cpp
         States/States.cpp
         KeyboardShortcuts/KeyboardShortcuts.cpp
         History/History.cpp
-        GUIComponents/GUIComponent.cpp
         GUIComponents/snapshot/Snapshot.cpp
         Font/FontManager.cpp)
 

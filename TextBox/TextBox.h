@@ -17,6 +17,8 @@
 #include <SFML/Window/Event.hpp>
 
 //FOLDERS
+#include "../GUIComponents/GUIComponent.h"
+#include "../History/History.h"
 #include "Cursor.h"
 #include "Label.h"
 #include "LetterObject.h"
@@ -33,20 +35,29 @@ private:
     sf::RectangleShape shape;           //Shape of the text box
     Label label;                        //Label object
     Cursor cursor;                      //Cursor object
+    States active;                      //Boolean to check if the text box is active
+
+    //Vectors
     std::vector<LetterObject> letters;  //Vector of letters
-    States active;                        //Boolean to check if the text box is active
+
 
 public:
     TextBox();
 
+    //Functions
+
+    //GUIComponent functions
     void draw(sf::RenderTarget &window, sf::RenderStates states) const override;
     void addEventHandler(sf::RenderWindow &window, sf::Event event) override;
-
     void update() override;
 
+
+
+    //TextBox functions
     void addLetter(LetterObject addedLetter);
     void removeLetter();
 
+    //Setters
     bool isEnabled() const;
     void setState(ObjectState state);
 

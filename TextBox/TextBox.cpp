@@ -4,6 +4,8 @@
 
 #include "TextBox.h"
 
+#include "../KeyboardShortcuts/KeyboardShortcuts.h"
+
 TextBox::TextBox() {
     shape.setSize(sf::Vector2f(200, TEXT_SIZE + 10));
     shape.setFillColor(sf::Color::Black);
@@ -14,7 +16,7 @@ TextBox::TextBox() {
 
 }
 
-
+// Draw the shape, label, cursor, and all the letters
 void TextBox::draw(sf::RenderTarget &window, sf::RenderStates states) const {
     window.draw(shape, states);
     window.draw(label, states);
@@ -25,6 +27,7 @@ void TextBox::draw(sf::RenderTarget &window, sf::RenderStates states) const {
     }
 }
 
+// Add an event handler to the text box
 void TextBox::addEventHandler(sf::RenderWindow &window, sf::Event event) {
     if(event.type == sf::Event::MouseButtonPressed) {
         if (MouseEvents<sf::RectangleShape>::mouseClicked(shape, window)) {
@@ -36,7 +39,7 @@ void TextBox::addEventHandler(sf::RenderWindow &window, sf::Event event) {
         }
     }
     if(event.type == sf::Event::TextEntered) {
-        if (isEnabled() && event.text.unicode < 128 && event.text.unicode != '\b') { // We only handle ASCII
+        if (isEnabled() && event.text.unicode < 128 && event.text.unicode != '\b' && event.text.unicode != 26) { // We only handle ASCII
             char typedChar = static_cast<char>(event.text.unicode);
 
             // Create a new LetterObject with the typed character
@@ -45,11 +48,13 @@ void TextBox::addEventHandler(sf::RenderWindow &window, sf::Event event) {
 
             // Add the new LetterObject to the letters vector
             addLetter(newLetter);
-        }
-    }
+        } else if (event.text.unicode > 127 || event.text.unicode == 26)
+            std::cout << "Invalid character" << std::endl;
 
+    }
 }
 
+// Update the cursor and all the letters
 void TextBox::update() {
     cursor.update();
     if (!letters.empty()) {
@@ -63,6 +68,7 @@ void TextBox::update() {
     }
 }
 
+// Add a snapshot of the text box
 void TextBox::addLetter(LetterObject addedLetter) {
     if (!letters.empty()) {
         // Get the position of the last letter
@@ -71,19 +77,37 @@ void TextBox::addLetter(LetterObject addedLetter) {
         // Set the position of the new letter to be next to the last one
         addedLetter.setPosition(lastLetterPos + sf::Vector2f(LETTER_WIDTH, 0));
     }
+    else {
+        // Set the position of the new letter to be at the beginning of the text box
+        addedLetter.setPosition(shape.getPosition() + sf::Vector2f(2, 4));
+    }
 
+    // Create a snapshot of the letter using HistoryNode and History Class
+    // HistoryNode<TextBox>
+    // History::pushHistory(letter);
+
+
+     // Add the letter to the vector of letters
     letters.push_back(addedLetter);
 }
+
+
+// Remove a letter from the text box
 void TextBox::removeLetter() {
     if (!letters.empty()) {
         letters.pop_back();
     }
+    else {
+        std::cout << "No letters to remove" << std::endl;
+    }
 }
 
+// Check if the text box is enabled
 bool TextBox::isEnabled() const {
     return active.getState();
 }
 
+// Set the state of the text box
 void TextBox::setState(ObjectState state) {
     active.toggleState();
     cursor.setState(state);
@@ -92,14 +116,17 @@ void TextBox::setState(ObjectState state) {
     }
 }
 
+// Add a snapshot of the text box
 sf::FloatRect TextBox::getLocalBounds() const {
     return shape.getLocalBounds();
 }
 
+// Add a snapshot of the text box
 sf::FloatRect TextBox::getGlobalBounds() const {
     return shape.getGlobalBounds();
 }
 
+// Add a snapshot of the text box
 sf::RectangleShape &TextBox::getShape() {
     return shape;
 }

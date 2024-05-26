@@ -7,6 +7,7 @@
 #include <SFML/Window/Keyboard.hpp>
 
 class KeyboardShortcuts {
+public:
     static bool isUndo();
 
 };

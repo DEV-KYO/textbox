@@ -112,13 +112,6 @@ build CMakeFiles/sfml_template.dir/History/History.cpp.obj: CXX_COMPILER__sfml_t
   OBJECT_DIR = CMakeFiles\sfml_template.dir
   OBJECT_FILE_DIR = CMakeFiles\sfml_template.dir\History
 
-build CMakeFiles/sfml_template.dir/GUIComponents/GUIComponent.cpp.obj: CXX_COMPILER__sfml_template_unscanned_Debug C$:/Users/jnmen/CLionProjects/sfml_template/GUIComponents/GUIComponent.cpp || cmake_object_order_depends_target_sfml_template
-  DEP_FILE = CMakeFiles\sfml_template.dir\GUIComponents\GUIComponent.cpp.obj.d
-  FLAGS = -g -fdiagnostics-color=always
-  INCLUDES = -isystem C:/SFML-2.6.1/include
-  OBJECT_DIR = CMakeFiles\sfml_template.dir
-  OBJECT_FILE_DIR = CMakeFiles\sfml_template.dir\GUIComponents
-
 build CMakeFiles/sfml_template.dir/GUIComponents/snapshot/Snapshot.cpp.obj: CXX_COMPILER__sfml_template_unscanned_Debug C$:/Users/jnmen/CLionProjects/sfml_template/GUIComponents/snapshot/Snapshot.cpp || cmake_object_order_depends_target_sfml_template
   DEP_FILE = CMakeFiles\sfml_template.dir\GUIComponents\snapshot\Snapshot.cpp.obj.d
   FLAGS = -g -fdiagnostics-color=always
@@ -141,7 +134,7 @@ build CMakeFiles/sfml_template.dir/Font/FontManager.cpp.obj: CXX_COMPILER__sfml_
 #############################################
 # Link the executable sfml_template.exe
 
-build sfml_template.exe: CXX_EXECUTABLE_LINKER__sfml_template_Debug CMakeFiles/sfml_template.dir/main.cpp.obj CMakeFiles/sfml_template.dir/TextBox/Cursor.cpp.obj CMakeFiles/sfml_template.dir/TextBox/Label.cpp.obj CMakeFiles/sfml_template.dir/TextBox/TextBox.cpp.obj CMakeFiles/sfml_template.dir/TextBox/LetterObject.cpp.obj CMakeFiles/sfml_template.dir/Application.cpp.obj CMakeFiles/sfml_template.dir/States/States.cpp.obj CMakeFiles/sfml_template.dir/KeyboardShortcuts/KeyboardShortcuts.cpp.obj CMakeFiles/sfml_template.dir/History/History.cpp.obj CMakeFiles/sfml_template.dir/GUIComponents/GUIComponent.cpp.obj CMakeFiles/sfml_template.dir/GUIComponents/snapshot/Snapshot.cpp.obj CMakeFiles/sfml_template.dir/Font/FontManager.cpp.obj | C$:/SFML-2.6.1/lib/libsfml-graphics-d.a C$:/SFML-2.6.1/lib/libsfml-window-d.a C$:/SFML-2.6.1/lib/libsfml-system-d.a
+build sfml_template.exe: CXX_EXECUTABLE_LINKER__sfml_template_Debug CMakeFiles/sfml_template.dir/main.cpp.obj CMakeFiles/sfml_template.dir/TextBox/Cursor.cpp.obj CMakeFiles/sfml_template.dir/TextBox/Label.cpp.obj CMakeFiles/sfml_template.dir/TextBox/TextBox.cpp.obj CMakeFiles/sfml_template.dir/TextBox/LetterObject.cpp.obj CMakeFiles/sfml_template.dir/Application.cpp.obj CMakeFiles/sfml_template.dir/States/States.cpp.obj CMakeFiles/sfml_template.dir/KeyboardShortcuts/KeyboardShortcuts.cpp.obj CMakeFiles/sfml_template.dir/History/History.cpp.obj CMakeFiles/sfml_template.dir/GUIComponents/snapshot/Snapshot.cpp.obj CMakeFiles/sfml_template.dir/Font/FontManager.cpp.obj | C$:/SFML-2.6.1/lib/libsfml-graphics-d.a C$:/SFML-2.6.1/lib/libsfml-window-d.a C$:/SFML-2.6.1/lib/libsfml-system-d.a
   FLAGS = -g
   LINK_LIBRARIES = C:/SFML-2.6.1/lib/libsfml-graphics-d.a  C:/SFML-2.6.1/lib/libsfml-window-d.a  C:/SFML-2.6.1/lib/libsfml-system-d.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\sfml_template.dir

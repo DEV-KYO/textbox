@@ -4,6 +4,8 @@
 
 #include "Application.h"
 
+#include "KeyboardShortcuts/KeyboardShortcuts.h"
+
 Application::Application() {
 
     unsigned int pixelWidth = 600; ///sf::VideoMode::getDesktopMode().width;
@@ -44,14 +46,16 @@ void Application::processEvents() {
     //Event Loop
     while(window.pollEvent(event))
     {
+
         //switch statement for event type
         switch (event.type)
         {
-
             //Close window
             case sf::Event::Closed:
                 window.close();
                 break;
+
+
 
             //Mouse Button Pressed
             case sf::Event::MouseButtonPressed:
@@ -71,9 +75,14 @@ void Application::processEvents() {
                     case sf::Keyboard::BackSpace:
                         textBox.removeLetter();
                     break;
-                }
 
-                break;
+                    case KeyboardShortcuts::isUndo():
+                        History::addEventHandler(window, event);
+                    break;
+
+                }
+            break;
+
             // Text entered
             case sf::Event::TextEntered:
                 textBox.addEventHandler(window, event);

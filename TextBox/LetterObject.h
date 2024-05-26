@@ -47,6 +47,7 @@ public:
 //    void applySnapshot(const Snapshot& snapshot) override;
 
 	void setCharacter(char typedChar);
+	char getCharacter() const;
 
 	sf::Vector2f getPosition();
 	void setPosition(const sf::Vector2f& position);

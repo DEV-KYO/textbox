@@ -26,6 +26,11 @@ void LetterObject::setCharacter(char typedChar) {
     text.setString(typedChar);
 }
 
+//Get the character of the letter object
+char LetterObject::getCharacter() const {
+    return text.getString().toAnsiString()[0];
+}
+
 sf::Vector2f LetterObject::getPosition() {
     return text.getPosition();
 }

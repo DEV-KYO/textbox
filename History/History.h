@@ -6,8 +6,9 @@
 #define TEXT_INPUT_PROJECT_HISTORY_H
 #include "HistoryNode.h"
 #include <stack>
+#include <SFML/Window/Event.hpp>
 
-class History  {
+class History : public GUIComponent{
 private:
     static std::stack<HistoryNode> stack;
 public:

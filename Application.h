@@ -12,6 +12,7 @@
 #include <iostream>
 
 #include "TextBox/TextBox.h"
+#include "History/History.h"
 
 class Application {
     sf::RenderWindow window;
