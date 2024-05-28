@@ -7,6 +7,7 @@
 #include "HistoryNode.h"
 #include <stack>
 #include <SFML/Window/Event.hpp>
+#include <iostream>
 
 class History : public GUIComponent{
 private:
@@ -15,7 +16,7 @@ public:
     static void pushHistory(const HistoryNode& snapshot);
     static HistoryNode& topHistory();
     static void popHistory();
-    static void addEventHandler(sf::RenderWindow& window, sf::Event event);
+    static void EventHistory(sf::RenderWindow& window, sf::Event event);
 
 };
 

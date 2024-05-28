@@ -7,11 +7,11 @@
 #include <SFML/Graphics/Drawable.hpp>
 #include <SFML/Graphics/Transformable.hpp>
 #include "EventHandler/EventHandler.h"
-#include "snapshot/SnapshotInterface.h"
+#include "Snapshot/SnapshotInterface.h"
 #include "../States/States.h"
 
 class GUIComponent  :   public EventHandler,
-//                      public SnapshotInterface,
+                        public SnapshotInterface,
                         public States,
                         public sf::Drawable,
                         public sf::Transformable {

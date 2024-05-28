@@ -6,6 +6,8 @@
 
 #include "../KeyboardShortcuts/KeyboardShortcuts.h"
 
+std::stack<HistoryNode> History::stack;
+
 void History::pushHistory(const HistoryNode &snapshot) {
     stack.push(snapshot);
 }
@@ -18,9 +20,12 @@ void History::popHistory() {
     stack.pop();
 }
 
-void History::addEventHandler(sf::RenderWindow &window, sf::Event event) {
-    if(event.key.code == KeyboardShortcuts::isUndo() && !stack.empty()) {
+void History::EventHistory(sf::RenderWindow &window, sf::Event event) {
+
+if(sf::Event::KeyPressed && KeyboardShortcuts::isUndo() && !stack.empty()) {
+        std::cout << "Undoing" << std::endl;
         HistoryNode node = stack.top();
         stack.pop();
+        node.component->applySnapshot(node.snapshot);
     }
 }

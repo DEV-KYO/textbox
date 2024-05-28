@@ -36,6 +36,7 @@ private:
     Label label;                        //Label object
     Cursor cursor;                      //Cursor object
     States active;                      //Boolean to check if the text box is active
+    Snapshot text_box_snapshot;                  //Snapshot of the text box
 
     //Vectors
     std::vector<LetterObject> letters;  //Vector of letters
@@ -50,7 +51,8 @@ public:
     void draw(sf::RenderTarget &window, sf::RenderStates states) const override;
     void addEventHandler(sf::RenderWindow &window, sf::Event event) override;
     void update() override;
-
+    Snapshot& getSnapshot() override;
+    void applySnapshot(const Snapshot& snapshot) override;
 
 
     //TextBox functions

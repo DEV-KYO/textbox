@@ -13,6 +13,8 @@ TextBox::TextBox() {
     shape.setOutlineThickness(1);
     shape.setPosition(1, 20);
     active.enableState();
+    text_box_snapshot = Snapshot();
+    History::pushHistory({text_box_snapshot, this});
 
 }
 
@@ -68,6 +70,26 @@ void TextBox::update() {
     }
 }
 
+Snapshot &TextBox::getSnapshot() {
+    std::map<std::string, std::any> snapshotData;
+    snapshotData["letters"] = letters;
+
+    text_box_snapshot = Snapshot(snapshotData);
+    return text_box_snapshot;
+}
+
+void TextBox::applySnapshot(const Snapshot &snapshot_in) {
+    text_box_snapshot = snapshot_in;
+    if (text_box_snapshot.getCount() > 0) {
+        letters = std::any_cast<std::vector<LetterObject>>(text_box_snapshot.getSnapshot("letters"));
+    } else {
+        // Handle the case where the "letters" key doesn't exist in the snapshot
+        // For example, you might want to clear the letters vector
+        letters.clear();
+    }
+}
+
+
 // Add a snapshot of the text box
 void TextBox::addLetter(LetterObject addedLetter) {
     if (!letters.empty()) {
@@ -82,13 +104,12 @@ void TextBox::addLetter(LetterObject addedLetter) {
         addedLetter.setPosition(shape.getPosition() + sf::Vector2f(2, 4));
     }
 
-    // Create a snapshot of the letter using HistoryNode and History Class
-    // HistoryNode<TextBox>
-    // History::pushHistory(letter);
-
-
-     // Add the letter to the vector of letters
     letters.push_back(addedLetter);
+
+    getSnapshot();
+
+    // Create a snapshot and push it to the history stack
+    History::pushHistory({text_box_snapshot, this});
 }
 
 
@@ -96,6 +117,10 @@ void TextBox::addLetter(LetterObject addedLetter) {
 void TextBox::removeLetter() {
     if (!letters.empty()) {
         letters.pop_back();
+
+        getSnapshot();
+
+        History::pushHistory({text_box_snapshot, this});
     }
     else {
         std::cout << "No letters to remove" << std::endl;

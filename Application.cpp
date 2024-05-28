@@ -65,6 +65,9 @@ void Application::processEvents() {
 
             //Key Pressed
             case sf::Event::KeyPressed:
+
+                History::EventHistory(window, event);
+
                 switch(event.key.code)
                 {
                     //Escape key
@@ -75,12 +78,8 @@ void Application::processEvents() {
                     case sf::Keyboard::BackSpace:
                         textBox.removeLetter();
                     break;
-
-                    case KeyboardShortcuts::isUndo():
-                        History::addEventHandler(window, event);
-                    break;
-
                 }
+
             break;
 
             // Text entered
@@ -88,7 +87,6 @@ void Application::processEvents() {
                 textBox.addEventHandler(window, event);
                 break;
         }
-
     }
 }
 

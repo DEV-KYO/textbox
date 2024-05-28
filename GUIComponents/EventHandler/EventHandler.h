@@ -8,7 +8,6 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 
 class EventHandler {
-
     virtual void addEventHandler(sf::RenderWindow& window, sf::Event event) = 0;
     virtual void update() = 0;
 };
