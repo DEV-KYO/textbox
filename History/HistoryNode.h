@@ -10,8 +10,8 @@
 
 struct HistoryNode
 {
-    Snapshot snapshot;
-    GUIComponent* component;
+    Snapshot snapshot;          // Snapshot of the GUIComponent
+    GUIComponent* component;    // Pointer to the GUIComponent
 };
 
 #endif //TEXT_INPUT_PROJECT_HISTORYNODE_H

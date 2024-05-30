@@ -10,13 +10,12 @@
 
 class FontManager {
 private:
-    static std::map<EnumFonts, sf::Font> fonts;
-    static void loadFont(EnumFonts font);
-    static std::string getFontPath(EnumFonts font);
+    static std::map<EnumFonts, sf::Font> fonts;         // Map of EnumFonts to sf::Font
+    static void loadFont(EnumFonts font);               // Loads a font from a file
+    static std::string getFontPath(EnumFonts font);     // Returns the path of the font file
 
 public:
-    static sf::Font& getFont(EnumFonts font);
-
+    static sf::Font& getFont(EnumFonts font);           // Returns the font
 };
 
 

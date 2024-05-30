@@ -8,8 +8,8 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 
 class EventHandler {
-    virtual void addEventHandler(sf::RenderWindow& window, sf::Event event) = 0;
-    virtual void update() = 0;
+    virtual void addEventHandler(sf::RenderWindow& window, sf::Event event) = 0;    //Adds an event handler to the window
+    virtual void update() = 0;                                                      //Updates the state of the event handler
 };
 
 

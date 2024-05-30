@@ -11,12 +11,12 @@
 
 class History : public GUIComponent{
 private:
-    static std::stack<HistoryNode> stack;
+    static std::stack<HistoryNode> stack;                                   // Stack of HistoryNodes
 public:
-    static void pushHistory(const HistoryNode& snapshot);
-    static HistoryNode& topHistory();
-    static void popHistory();
-    static void EventHistory(sf::RenderWindow& window, sf::Event event);
+    static void pushHistory(const HistoryNode& snapshot);                   // Pushes a HistoryNode to the stack
+    static HistoryNode& topHistory();                                       // Returns the top HistoryNode of the stack
+    static void popHistory();                                               // Pops the top HistoryNode of the stack
+    static void EventHistory(sf::RenderWindow& window, sf::Event event);    // Processes the event history
 
 };
 

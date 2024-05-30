@@ -27,7 +27,7 @@ public:
     // returns if the object has been clicked and the mouse has dragged over the object
     static bool draggedOver(T& object, sf::RenderWindow& window, sf::Event event);
 
-    // returns tru if the mouse is hovered over the object
+    // returns true if the mouse is hovered over the object
     static bool hovered(T& object, sf::RenderWindow& window);
 
 private:

@@ -6,6 +6,7 @@
 
 
 Label::Label() {
+    //Set the font
     text.setFont(FontManager::getFont(PIXELGEORGIA));
     text.setCharacterSize(TEXT_SIZE);
     text.setFillColor(sf::Color::White);

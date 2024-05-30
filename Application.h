@@ -14,16 +14,30 @@
 #include "TextBox/TextBox.h"
 #include "History/History.h"
 
+
 class Application {
-    sf::RenderWindow window;
-    TextBox textBox;
+private:
+    sf::RenderWindow window;        //This is the window that will be displayed
+    TextBox textBox;                //This is the text box that will be displayed
 
 public:
     Application();
+
+    //Runs the application & main loop
+    //It will run a while loop that will process events, update, and render
     void run();
+
+    //Function called to draw function of any object
+    //that needs to be drawn on the window
     void draw();
+
+    //This function processes events that are happening in the window
     void processEvents();
+
+    //This function updates the state of the application
     void update();
+
+    //Renders all objects to the window
     void render();
 };
 

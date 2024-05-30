@@ -3,9 +3,8 @@
 //
 
 #include "FontManager.h"
-std::map<EnumFonts, sf::Font> FontManager::fonts{
+std::map<EnumFonts, sf::Font> FontManager::fonts;
 
-};
 
 void FontManager::loadFont(EnumFonts font) {
     if(!fonts[font].loadFromFile(getFontPath(font)))

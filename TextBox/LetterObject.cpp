@@ -6,6 +6,7 @@
 
 
 LetterObject::LetterObject() {
+    //Set the font of the text
     text = sf::Text();
     text.setFont(FontManager::getFont(EnumFonts::PIXELGEORGIA));
     text.setCharacterSize(TEXT_SIZE);
@@ -15,7 +16,7 @@ LetterObject::LetterObject() {
 
 
 void LetterObject::update() {
-
+    //Empty
 }
 
 void LetterObject::draw(sf::RenderTarget &window, sf::RenderStates states) const {
@@ -40,11 +41,15 @@ void LetterObject::setPosition(const sf::Vector2f& position) {
 }
 
 void LetterObject::setState(ObjectState state) {
+    //Set the color of the text depending on the state
     if(state == ENABLED)
         text.setFillColor(sf::Color::White);
     else {
         text.setFillColor(sf::Color::Red);
     }
+
+    //Can further improve this functionality,
+    //you would not want to change the color of the text to 'RED'
 }
 
 sf::FloatRect LetterObject::getLocalBounds() const {

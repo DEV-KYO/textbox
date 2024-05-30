@@ -10,11 +10,11 @@
 #include "Snapshot/SnapshotInterface.h"
 #include "../States/States.h"
 
-class GUIComponent  :   public EventHandler,
-                        public SnapshotInterface,
-                        public States,
-                        public sf::Drawable,
-                        public sf::Transformable {
+class GUIComponent  :   public EventHandler,        //Inherits from EventHandler
+                        public SnapshotInterface,   //Inherits from SnapshotInterface
+                        public States,              //Inherits from States
+                        public sf::Drawable,        //Inherits from sf::Drawable
+                        public sf::Transformable {  //Inherits from sf::Transformable
 
 };
 

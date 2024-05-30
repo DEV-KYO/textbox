@@ -20,26 +20,23 @@
 
 class Cursor : public sf::Drawable {
 private:
-    sf::RectangleShape cursor;
-    sf::Clock clock;
-    bool visible;
-    float cursorInterval;
-    States cursorStates;
+    sf::RectangleShape cursor;      //The cursor object that will be displayed
+    sf::Clock clock;                //The clock that will be used to determine the cursor's visibility
+    bool visible;                   //The visibility of the cursor
+    float cursorInterval;           //The interval of the cursor
+    States cursorStates;            //The state of the cursor
 
 
 public:
-    Cursor();
-    void draw(sf::RenderTarget &window, sf::RenderStates states) const override;
-    void update();
-    void setPosition(const sf::Vector2f& position);
-    void setSize(const sf::Vector2f& size);
-    void setFillColor(const sf::Color& color);
-    void setOutlineColor(const sf::Color& color);
-    void setState(ObjectState state);
-
-
-
-    void getPosition();
+    Cursor();   //Default constructor
+    void draw(sf::RenderTarget &window, sf::RenderStates states) const override;    //Draws the cursor to the window
+    void update();  //Updates the cursor's visibility
+    void setPosition(const sf::Vector2f& position);   //Sets the position of the cursor
+    void setSize(const sf::Vector2f& size);      //Sets the size of the cursor
+    void setFillColor(const sf::Color& color);  //Sets the fill color of the cursor
+    void setOutlineColor(const sf::Color& color);   //Sets the outline color of the cursor
+    void setState(ObjectState state);   //Sets the state of the cursor
+    void getPosition(); //Gets the position of the cursor
 };
 
 

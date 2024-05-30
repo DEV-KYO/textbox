@@ -12,6 +12,7 @@
 
 template<class T>
 void MouseEvents<T>::countClicks(sf::Event event) {
+    //this is what I used to determine if a double click or triple click occurred
     if(event.type == sf::Event::MouseButtonPressed)
     {
         if(event.mouseButton.button == sf::Mouse::Left)

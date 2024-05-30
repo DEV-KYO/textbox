@@ -8,7 +8,7 @@
 
 class KeyboardShortcuts {
 public:
-    static bool isUndo();
+    static bool isUndo(); // Return true if the user presses Ctrl + Z
 
 };
 

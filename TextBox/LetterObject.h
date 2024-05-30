@@ -29,31 +29,26 @@ private:
     sf::Text text;
 
 public:
-    LetterObject();
-
+    LetterObject(); //Constructor
 
 //From GUIComponent
-
     // from EventHandler
     void update();
-
     //Render
     //from the sf::Drawable class
     void draw(sf::RenderTarget& window, sf::RenderStates states) const;
 
-
-    //from SnapshotInterface
-//    Snapshot& getSnapshot() override;
-//    void applySnapshot(const Snapshot& snapshot) override;
-
+	//Getters and Setters
 	void setCharacter(char typedChar);
 	char getCharacter() const;
 
 	sf::Vector2f getPosition();
 	void setPosition(const sf::Vector2f& position);
 
+	//Set the state of the object
 	void setState(ObjectState state);
 
+	//Get the state of the object
 	sf::FloatRect getLocalBounds() const;
 
 };

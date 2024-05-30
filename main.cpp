@@ -4,12 +4,13 @@
 
 
 int main() {
-    //container class that holds
-    //      .run
+    //container class that holds the window and the text box
     Application app;
 
+    //run the application
     app.run();
 
+    //end of program
     std::cout   << std::endl
                 << std::endl
                 << std::endl

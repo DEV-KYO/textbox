@@ -7,22 +7,31 @@
 #include "../KeyboardShortcuts/KeyboardShortcuts.h"
 
 TextBox::TextBox() {
+    // Set the shape of the text box
     shape.setSize(sf::Vector2f(200, TEXT_SIZE + 10));
     shape.setFillColor(sf::Color::Black);
     shape.setOutlineColor(sf::Color::White);
     shape.setOutlineThickness(1);
     shape.setPosition(1, 20);
+
+    //Set the textbox to be active by default
     active.enableState();
+
+    //Create a snapshot of the text box
     text_box_snapshot = Snapshot();
+
     History::pushHistory({text_box_snapshot, this});
 
 }
 
 // Draw the shape, label, cursor, and all the letters
 void TextBox::draw(sf::RenderTarget &window, sf::RenderStates states) const {
+
+    //Draw the shape, label, and cursor
     window.draw(shape, states);
     window.draw(label, states);
     window.draw(cursor, states);
+
     //Draw all the letters
     for (auto &letter : letters) {
         window.draw(letter, states);
@@ -40,8 +49,9 @@ void TextBox::addEventHandler(sf::RenderWindow &window, sf::Event event) {
             setState(DISABLED);
         }
     }
+
     if(event.type == sf::Event::TextEntered) {
-        if (isEnabled() && event.text.unicode < 128 && event.text.unicode != '\b' && event.text.unicode != 26) { // We only handle ASCII
+        if (isEnabled() && event.text.unicode < 128 && event.text.unicode != '\b' && event.text.unicode != 26) { // We only handle ASCII characters
             char typedChar = static_cast<char>(event.text.unicode);
 
             // Create a new LetterObject with the typed character
@@ -50,14 +60,14 @@ void TextBox::addEventHandler(sf::RenderWindow &window, sf::Event event) {
 
             // Add the new LetterObject to the letters vector
             addLetter(newLetter);
-        } else if (event.text.unicode > 127 || event.text.unicode == 26)
+        } else if (event.text.unicode > 127 || event.text.unicode == 26) // Handle non-ASCII characters
             std::cout << "Invalid character" << std::endl;
-
     }
 }
 
 // Update the cursor and all the letters
 void TextBox::update() {
+    // Update the cursor
     cursor.update();
     if (!letters.empty()) {
         cursor.setPosition(letters.back().getPosition() + sf::Vector2f(10, 1));
@@ -65,12 +75,15 @@ void TextBox::update() {
     else {
         cursor.setPosition(shape.getPosition() + sf::Vector2f(2, 4));
     }
+
+    // Update all the letters
     for (auto &letter : letters) {
         letter.update();
     }
 }
 
 Snapshot &TextBox::getSnapshot() {
+    // Create a snapshot of the text box
     std::map<std::string, std::any> snapshotData;
     snapshotData["letters"] = letters;
 
@@ -92,6 +105,7 @@ void TextBox::applySnapshot(const Snapshot &snapshot_in) {
 
 // Add a snapshot of the text box
 void TextBox::addLetter(LetterObject addedLetter) {
+    // If there are already letters in the text box
     if (!letters.empty()) {
         // Get the position of the last letter
         sf::Vector2f lastLetterPos = letters.back().getPosition();
@@ -103,9 +117,10 @@ void TextBox::addLetter(LetterObject addedLetter) {
         // Set the position of the new letter to be at the beginning of the text box
         addedLetter.setPosition(shape.getPosition() + sf::Vector2f(2, 4));
     }
-
+    // Add the new letter to the letters vector
     letters.push_back(addedLetter);
 
+    // Get a snapshot of the text box
     getSnapshot();
 
     // Create a snapshot and push it to the history stack
@@ -115,11 +130,15 @@ void TextBox::addLetter(LetterObject addedLetter) {
 
 // Remove a letter from the text box
 void TextBox::removeLetter() {
+    // If there are letters in the text box
     if (!letters.empty()) {
+        // Remove the last letter
         letters.pop_back();
 
+        // Get a snapshot of the text box
         getSnapshot();
 
+        // Create a snapshot and push it to the history stack
         History::pushHistory({text_box_snapshot, this});
     }
     else {

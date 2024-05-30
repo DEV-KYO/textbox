@@ -36,40 +36,35 @@ private:
     Label label;                        //Label object
     Cursor cursor;                      //Cursor object
     States active;                      //Boolean to check if the text box is active
-    Snapshot text_box_snapshot;                  //Snapshot of the text box
+    Snapshot text_box_snapshot;         //Snapshot of the text box
 
     //Vectors
     std::vector<LetterObject> letters;  //Vector of letters
 
 
 public:
+    //Default constructor
     TextBox();
 
-    //Functions
-
     //GUIComponent functions
-    void draw(sf::RenderTarget &window, sf::RenderStates states) const override;
-    void addEventHandler(sf::RenderWindow &window, sf::Event event) override;
+    void draw(sf::RenderTarget &window, sf::RenderStates states) const override;    //Draws the text box
+    void addEventHandler(sf::RenderWindow &window, sf::Event event) override;       //Adds an event handler to the text box
     void update() override;
-    Snapshot& getSnapshot() override;
-    void applySnapshot(const Snapshot& snapshot) override;
-
+    Snapshot& getSnapshot() override;                                               //Returns the snapshot of the text box
+    void applySnapshot(const Snapshot& snapshot) override;                          //Applies the snapshot to the text box
 
     //TextBox functions
     void addLetter(LetterObject addedLetter);
     void removeLetter();
 
     //Setters
-    bool isEnabled() const;
-    void setState(ObjectState state);
-
+    void setState(ObjectState state);                                               //Sets the state of the text box
 
     //Getters
-
-    //Get local bounds
-    sf::FloatRect getLocalBounds() const;
-    sf::FloatRect getGlobalBounds() const;
-    sf::RectangleShape& getShape();
+    bool isEnabled() const;                                                         //Returns true if the text box is enabled
+    sf::FloatRect getLocalBounds() const;                                           //Returns the local bounds of the text box
+    sf::FloatRect getGlobalBounds() const;                                          //Returns the global bounds of the text box
+    sf::RectangleShape& getShape();                                                 //Returns the shape of the text box
 
 
 };

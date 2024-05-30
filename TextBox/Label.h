@@ -20,21 +20,21 @@
 
 class Label : public sf::Drawable {
 private:
-    sf::Text text;
-    sf::Font font;
-    EnumFonts fontType;
-    std::string textString;
-    sf::Vector2f position;
-    sf::Color color;
-    unsigned int fontSize{};
-    sf::Text::Style style;
+    sf::Text text;              //The text object that will be displayed
+    sf::Font font;              //The font that will be used
+    EnumFonts fontType;         //The font type that will be used
+    std::string textString;     //The string that will be displayed
+    sf::Vector2f position;      //The position of the text
+    sf::Color color;            //The color of the text
+    unsigned int fontSize{};    //The size of the text
+    sf::Text::Style style;      //The style of the text
 
 
 
 public:
-    Label();
-    void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
-    void setText(const std::string &textString);
+    Label();    //Default constructor
+    void draw(sf::RenderTarget &target, sf::RenderStates states) const override; //Draws the text to the window
+    void setText(const std::string &textString);    //Sets the text of the label
 };
 
 

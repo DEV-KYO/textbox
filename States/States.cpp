@@ -17,7 +17,6 @@ bool States::getState() const {
 // Set state of object
 void States::enableState() {
     states[ENABLED] = true;
-    states[DISABLED] = false;
 }
 
 // Disable state of object
