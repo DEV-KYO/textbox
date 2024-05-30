@@ -1,5 +1,8 @@
 # SFML TextBox
 ___
+
+#### Textbox Example
+![TextBox Example](https://raw.githubusercontent.com/DEV-KYO/textbox/a949ec8d86b1a931e7952e39701526e8de33b1ac/Assets/GIF/Textbox%20Input%20Video.gif?token=BBALMGSA5EQCJJCZWTWJL2DGK7JV2)
 ## Description 
 This project is a simple text box that can be used in a SFML application. 
 The text box is a class that can be used to create a text box in a SFML window.
